@@ -6,6 +6,10 @@ import App from './App.vue';
 import './polyfills.js';
 import '../css/app.css';
 
+// Import Toast
+import { toast } from 'vue3-toastify';
+import 'vue3-toastify/dist/index.css';
+
 // Import your components
 import Dashboard from './components/Dashboard.vue';
 import BankAccountList from './components/bank-accounts/BankAccountList.vue';
@@ -52,6 +56,14 @@ const router = createRouter({
 const app = createApp(App);
 
 app.use(router);
+
+// Add the toast compatibility layer
+app.config.globalProperties.$toasted = {
+    success: (message) => toast.success(message),
+    error: (message) => toast.error(message),
+    info: (message) => toast.info(message),
+    warning: (message) => toast.warning(message)
+};
 
 // Mount the app
 app.mount('#app');
