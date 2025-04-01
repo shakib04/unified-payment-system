@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\API\BillerController;
 use App\Http\Controllers\API\PaymentMethodController;
+use App\Http\Controllers\API\ProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\API\AuthController;
@@ -97,6 +98,13 @@ Route::middleware('auth:sanctum')->group(function () {
     // Payment Gateways
     Route::get('/payment-gateways', [PaymentGatewayController::class, 'index']);
     Route::get('/payment-gateways/{code}', [PaymentGatewayController::class, 'show']);
+
+    // User Profile
+    Route::get('/profile', [ProfileController::class, 'getProfile']);
+    Route::put('/profile', [ProfileController::class, 'updateProfile']);
+    Route::put('/profile/password', [ProfileController::class, 'updatePassword']);
+    Route::post('/profile/photo', [ProfileController::class, 'updateProfilePhoto']);
+    Route::get('/profile/statistics', [ProfileController::class, 'getStatistics']);
 
     // Utility Payments
     Route::post('/utilities/mobile-recharge', [UtilityController::class, 'mobileRecharge']);

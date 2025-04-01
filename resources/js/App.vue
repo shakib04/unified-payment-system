@@ -106,7 +106,8 @@ export default {
         },
         goToProfile() {
             // Implement profile page navigation
-            alert('Profile page will be implemented soon.');
+           // alert('Profile page will be implemented soon.');
+            this.$router.push('/profile');
         },
         logout() {
             axios.post('/api/logout')

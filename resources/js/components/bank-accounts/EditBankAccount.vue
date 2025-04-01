@@ -283,6 +283,9 @@ export default {
                         setTimeout(() => {
                             this.success = null;
                         }, 3000);
+
+                        this.$router.push('/bank-accounts');
+
                     } else {
                         this.error = response.data.message || 'Failed to update bank account';
                     }
